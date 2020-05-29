@@ -1,0 +1,72 @@
+<template>
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <h2>New Applicant Registration</h2>
+    <form submit.delegate="save()" validation-errors="errors.bind: formErrors; controller.bind: formValidationController" >
+    <div class="form-group row">
+      <label for="name" class="col-sm-3 col-form-label">Name</label>
+      <div class="col-sm-7">
+        <input keyup.delegate="changed()" id="name" class="form-control" value.bind="name & validateOnChangeOrBlur : formValidationController">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+      <div class="col-sm-7">
+      <input keyup.delegate="changed()" id="FamilyName" type="text" class="form-control" value.bind="FamilyName & validateOnChangeOrBlur : formValidationController">
+    </div>
+    </div>
+      
+    <div class="form-group row">
+      <label for="address" class="col-sm-3 col-form-label">Address</label>
+      <div class="col-sm-7">
+        <input keyup.delegate="changed()" id="Address" class="form-control" name="FamilyName" value.bind="Address & validateOnChangeOrBlur : formValidationController">
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="age" class="col-sm-3 col-form-label">Age</label>
+        <div class="col-sm-7">
+          <input keyup.delegate="changed()" id="age" class="form-control" value.bind="Age & validateOnChangeOrBlur : formValidationController">
+        </div>
+      </div>
+      
+    <div class="form-group row">
+      <label for="EmailAddress" class="col-sm-3 col-form-label">Emal Address</label>
+      <div class="col-sm-7">
+      <input keyup.delegate="changed()" id="EmailAddress" type="email" class="form-control" value.bind="EmailAddress & validateOnChangeOrBlur : formValidationController">
+      </div>
+      </div> 
+      
+
+      <div class="form-group row">
+        <label for="CountryOfOrigin" class="col-sm-3 col-form-label">Country Of Origin</label>
+        <div class="col-sm-7">
+        <input keyup.delegate="changed()" id="CountryOfOrigin" class="form-control" value.bind="CountryOfOrigin & validateOnChangeOrBlur : formValidationController">
+        <span value.bind="CountryOfOriginErrors">${CountryOfOriginErrors}</span>
+      </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="Hired" class="col-sm-3 form-check-label">Hired?</label>
+          <div class="col-sm-2">
+          <input type="checkbox" checked.bind="isHired" id="Hired" class="form-control-checkbox" value.bind="isHired & validateOnChangeOrBlur : formValidationController">
+        </div>
+      </div>
+      
+      <p>${Message}</p>
+      <p><a href='${Link}' target="blank">${Link}</a></p>
+      <button class="btn btn-primary" type="submit" disabled.bind="formErrors.length > 0">Submit</button>
+      <button class="btn btn-primary" disabled.bind="reset" click.trigger = "openModal()">Reset</button>
+    
+  </form>
+</div>
+<div class="col-md-4">
+    <h4>Input Conditions</h4>
+    <ul>
+        <li value.bind="formErrors" repeat.for="errorInfo of formErrors">
+            ${errorInfo.error.message}
+        </li>
+    </ul>
+</div>
+</div>
+</template>

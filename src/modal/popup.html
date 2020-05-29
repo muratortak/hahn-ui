@@ -1,0 +1,14 @@
+<template>
+    <div class="container">
+    <ux-dialog>
+       <ux-dialog-body>
+          <h3>Are you sure to reset the form?</h3>
+       </ux-dialog-body>
+    
+       <ux-dialog-footer>
+          <button click.trigger = "controller.cancel()">No</button>
+          <button click.trigger = "controller.ok(message)">Yes</button>
+       </ux-dialog-footer>	
+    </ux-dialog>	
+</div>
+</template>
